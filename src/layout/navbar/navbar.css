@@ -1,0 +1,166 @@
+.header{
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
+  font-size: 22px;
+}
+.logo{
+  color:#B04949;
+}
+.logo span{
+  font-weight: bold;
+}
+.profile{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  position: relative;
+}
+.profile .user{
+  color: #7879F1;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.profile_rasm{
+  width: 50px;
+}
+.profile_rasm img{
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.profile-about{
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 130%;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  background-color: white;
+}
+
+.profile-about.actives{
+  display: block;
+}
+.profile-about .chiqish{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  color: red;
+}
+.profile .chiqish:hover{
+  background-color: rgba(192, 192, 192, 0.589);
+}
+.about_rasm{
+  width: 80px;
+  position: relative;
+  overflow: hidden;
+  border-radius:100%;
+  text-align: center;
+  margin: 0 auto;
+}
+.about_rasm span{
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  background-color: black;
+  bottom: -50px;
+  left:0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  color: silver;
+  font-size: 14px;
+  line-height: 30px;
+}
+.about_rasm img{
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+.about_rasm img:hover ~ span{
+  bottom: 0px;
+}
+.about_rasm span:hover {
+  bottom: 0px ;
+}
+.profile-about .tugmalar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.tugmalar button{
+  padding: 5px 15px;
+  font-size: 15px;
+  background-color: blue;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+.tugmalar button:hover{
+  background-color: rgba(0, 0, 255, 0.582);
+}
+
+/* navlinklar bilan page ning style larri */
+
+.page_comp{
+  display: flex;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+nav{
+  width: 250px;
+  display: flex;
+  flex-direction: column;  
+  box-shadow: 0 0 5px 3px rgb(226, 226, 226);
+  height: 200px;
+  
+}
+
+nav a{
+  color: #6d6d6d;
+  padding: 15px;  
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav a:nth-child(2n){
+  background-color: #f5f5f5;
+}
+
+nav a:hover{
+  background-color: #c5c5c5;
+}
+nav a .icon_left{
+  margin-left: 10px;
+  transition: 0.5s ease-in-out;
+}
+.active{
+  background-color:#b3ecff !important;
+  color: #4A7DA3 !important;
+  transition: all 0.3s ease-in-out;
+}
