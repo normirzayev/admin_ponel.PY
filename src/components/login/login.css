@@ -1,3 +1,7 @@
+@font-face {
+  font-family: muchiy;
+  src: url(../../img/font/DancingScript-Bold.ttf);
+}
 .login_oyna{
   position: fixed;
   width: 100%;
@@ -86,7 +90,6 @@
   left: 1.7rem;
   font-size: 1rem;
 }
-
 .parol span{
   width: 23px;
   height: 23px;
@@ -99,11 +102,9 @@
 .parol span img{
   width: 100%;
 }
-
 .forma_input{
-  height: 25vh;
+  height: 160px;
 }
-
 .captcha{
   display: flex;
   margin: 10px 0;
@@ -140,4 +141,13 @@
 
 .login button:hover{
   background: linear-gradient(360deg, #E95151 0%, #BB0022 100%);
+}
+
+.captcha p{
+  user-select: none;
+  font-family: muchiy;
+  background-color: grey;
+  padding: 7px 25px;
+  border-radius: 15px;
+  font-size: 22px;  
 }

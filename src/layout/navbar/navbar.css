@@ -96,11 +96,11 @@
   object-fit: cover;
   cursor: pointer;
 }
-.about_rasm img:hover ~ span{
+.about_rasm label:hover ~ span{
   bottom: 0px;
 }
 .about_rasm span:hover {
-  bottom: 0px ;
+  bottom: 0px;
 }
 .profile-about .tugmalar{
   width: 100%;

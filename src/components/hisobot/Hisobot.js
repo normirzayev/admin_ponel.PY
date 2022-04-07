@@ -1,10 +1,9 @@
 import React, {useContext} from "react";
+import Pagenation from "../../layout/pagenation/Pagenation";
 import { DataContext } from "../context/Context";
-import { useNavigate } from "react-router-dom"
 import "./hisobot.css";
 export default function Hisobot(){
-  const path = useNavigate();  
-  const {data, setData} = useContext(DataContext);
+  const {currentPosts} = useContext(DataContext);
   return(
     <div className="hisobot">
       <div className="header-flex">
@@ -31,8 +30,8 @@ export default function Hisobot(){
           </thead>
           <tbody>
             {
-              data.map(item => (
-                <tr>
+              currentPosts.map(item => (
+                <tr key={item.id}>
                   <th>t/r</th>
                   <td>{item.nomi}</td>
                   <td>{item.miqdori}</td>
@@ -44,6 +43,7 @@ export default function Hisobot(){
             }
           </tbody>
         </table>
+        <Pagenation /> 
       </div>
     </div>
   )

@@ -1,12 +1,19 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { DataContext } from "../context/Context";
-import { faEdit, faPlusCircle, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faPlusCircle, faSearch, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom"
 import "./mahsulot.css";
+import Pagenation from "../../layout/pagenation/Pagenation";
 export default function Mahsulotlar(){
   const path = useNavigate();  
-  const {data, setData} = useContext(DataContext);
+  const {currentPosts} = useContext(DataContext);
+  const [searchTeam, setSerachTeam] = useState("");
+  const [search, setSearch] = useState(true);
+  const handleSerach = () => {
+    setSearch(!search);
+    console.log(search);
+  }
   return(
     <div className="mahsulotlar">
         <div className="header-flex">
@@ -18,7 +25,20 @@ export default function Mahsulotlar(){
             <thead>
               <tr>
                 <th>t/r</th>
-                <th>nomi</th>
+                <th>
+                  nomi
+                  <div className={search ? "searchTeam" : "searchTeam searchActive"}>
+                    <FontAwesomeIcon icon={faSearch} className="searchIcon" onClick={handleSerach} />
+                    {/* <input type="text"/> */}
+                    <input type="text" 
+                      placeholder="search..." 
+                      className={search ? "searchInput" : "searchInput searchActive "}
+                      onChange={(e) => {
+                        setSerachTeam(e.target.value)
+                      }}
+                    />
+                  </div>
+                </th>
                 <th>miqdori</th>
                 <th>yana nimadir</th>
                 <th>birnarsa</th>
@@ -28,7 +48,14 @@ export default function Mahsulotlar(){
             </thead>
             <tbody>
               {
-                data.map(item => (
+                currentPosts.filter((item) => {
+                  if(searchTeam == ""){
+                    return item
+                  }
+                  else if (item.nomi.toLowerCase().includes(searchTeam.toLocaleLowerCase())){
+                    return item
+                  }
+                }).map(item => (
                   <tr key={item.id}>
                     <th>t/r</th>
                     <td>{item.nomi}</td>
@@ -45,6 +72,7 @@ export default function Mahsulotlar(){
               }
             </tbody>
           </table>
+              <Pagenation />
         </div>
     </div>
   )

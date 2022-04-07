@@ -9,6 +9,7 @@ import { useState } from "react";
 import Hisobot from "../../components/hisobot/Hisobot";
 import Erorr from "../erorr/Erorr";
 import Login from "../../components/login/Login";
+import Register from "../../components/register/Register";
 export default function Navbar() {
   const [profile, setProfile] = useState(true)
   const handleProfile = () => {
@@ -26,7 +27,8 @@ export default function Navbar() {
         <div className={profile ? "profile-about" : "profile-about actives"}>
           <div className="chiqish" onClick={() => setProfile(!profile)} >x</div>
           <div className="about_rasm">
-            <img src={user} alt="profile"/>
+            <input type="file" id="profile_input" />
+            <label htmlFor="profile_input"><img src={user} alt="profile"/></label>
             <span> <FontAwesomeIcon icon={faCamera}></FontAwesomeIcon> </span>
           </div>          
           <div className="user">
@@ -50,6 +52,7 @@ export default function Navbar() {
           <Route path="/mahsulotqoshish" element={<Qoshish />} /> 
           <Route path="/hisobot" element={<Hisobot />} /> 
           <Route path="/login" element={ <Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*"  element={<Erorr /> } />
         </Routes>
       </div>

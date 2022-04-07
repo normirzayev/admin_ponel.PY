@@ -30,6 +30,7 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  position: relative;
 }
 table thead tr{
   background-color: #7879F1;
@@ -81,4 +82,37 @@ td .delete{
 }
 td .delete:hover{
   background-color: #eb0606;
+}
+.searchTeam{
+  padding: 5px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  position: absolute;
+  top: 3px;
+  width: 3%;
+  left: 17%;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+}
+.searchTeam:hover{
+  border: 2px solid green;
+}
+.searchInput{
+  width: 0%;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: none;
+}
+.searchTeam .searchIcon{
+  color: black;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.searchActive{
+  width: 180px;
+  left: 5%;
 }
