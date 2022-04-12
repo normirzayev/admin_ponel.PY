@@ -1,9 +1,17 @@
-import React, {useContext} from "react";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, {useContext, useState} from "react";
 import Pagenation from "../../layout/pagenation/Pagenation";
 import { DataContext } from "../context/Context";
 import "./hisobot.css";
 export default function Hisobot(){
   const {currentPosts} = useContext(DataContext);
+  const [searchTeam, setSerachTeam] = useState("");
+  const [search, setSearch] = useState(true);
+  const handleSerach = () => {
+    setSearch(!search);
+    setSerachTeam("")
+  }
   return(
     <div className="hisobot">
       <div className="header-flex">
@@ -21,11 +29,28 @@ export default function Hisobot(){
           <thead>
             <tr>
               <th>t/r</th>
-              <th>nomi</th>
-              <th>miqdori</th>
-              <th>yana nimadir</th>
-              <th>birnarsa</th>
+              <th>
+                nomi
+                <div className={search ? "searchTeam" : "searchTeam searchActive"} >
+                  <FontAwesomeIcon icon={faSearch} className="searchIcon" onClick={handleSerach}/>
+                  <input type="text" 
+                    placeholder="search..."
+                    className={search ? "searchInput" : "searchInput searchActive"}
+                    value={searchTeam}
+                    onChange={(e) => {
+                      setSerachTeam(e.target.value)
+                    }}
+                  />
+                  {
+                    searchTeam.length ? <span className="tozala" onClick={() => setSerachTeam("")} >x</span> : ""
+                  }
+                </div>  
+              </th>
+              <th>soni</th>
+              <th>rangi</th>
+              <th>vazn</th>
               <th>rasmi</th>
+              <th>mudat</th>
             </tr>
           </thead>
           <tbody>
@@ -33,11 +58,12 @@ export default function Hisobot(){
               currentPosts.map(item => (
                 <tr key={item.id}>
                   <th>t/r</th>
-                  <td>{item.nomi}</td>
-                  <td>{item.miqdori}</td>
-                  <td>{item.malumot}</td>
-                  <td>{item.qoshimcha}</td>
-                  <td><div className="mahsulot_rasmi"><img src={item.rasmi} alt="mahsulot rasmi" /></div></td>
+                  <td>{item.nom}</td>
+                  <td>{item.son}</td>
+                  <td>{item.rang}</td>
+                  <td>{item.kg}</td>
+                  <td><div className="mahsulot_rasmi"><img src={item.rasm} alt="mahsulot rasmi" /></div></td>
+                  <td>{item.mudat}</td>
                 </tr>
               ))
             }

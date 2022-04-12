@@ -5,17 +5,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom"
 import "./mahsulot.css";
 import Pagenation from "../../layout/pagenation/Pagenation";
+import axios from "axios";
+import Loader from "../loader/Loader";
 export default function Mahsulotlar(){
   const path = useNavigate();  
-  const {currentPosts} = useContext(DataContext);
+  const {currentPosts,dataMaxsulot, setLoad, load} = useContext(DataContext);
   const [searchTeam, setSerachTeam] = useState("");
   const [search, setSearch] = useState(true);
   const handleSerach = () => {
     setSearch(!search);
-    console.log(search);
+    setSerachTeam("")
   }
+  
+  // o'chirish
+  const del = (item) => { 
+    setLoad(true)
+    console.log();
+    axios({
+      method:"delete",
+      url:`https://v2warehouseproject.pythonanywhere.com/products/${item.sana.slice(0, 4)}/${item.sana.slice(5, 7)}/${item.sana.slice(8, 10)}/${item.id}`
+    })
+    .then((res) => {
+      dataMaxsulot()
+      setLoad(false)
+    })
+    .catch(() => console.log("xato"))
+  }
+
   return(
-    <div className="mahsulotlar">
+    <>
+      <div className="mahsulotlar">
         <div className="header-flex">
           <h1>Mahsulotlar</h1>
           <button onClick={()=> path("/mahsulotqoshish")}> <FontAwesomeIcon icon={faPlusCircle} /> mahsulot qo'shish</button>
@@ -28,44 +47,40 @@ export default function Mahsulotlar(){
                 <th>
                   nomi
                   <div className={search ? "searchTeam" : "searchTeam searchActive"}>
-                    <FontAwesomeIcon icon={faSearch} className="searchIcon" onClick={handleSerach} />
-                    {/* <input type="text"/> */}
+                    <FontAwesomeIcon icon={faSearch} className="searchIcon" onClick={handleSerach}/>
                     <input type="text" 
-                      placeholder="search..." 
-                      className={search ? "searchInput" : "searchInput searchActive "}
+                      placeholder="search..."
+                      className={search ? "searchInput" : "searchInput searchActive"}
+                      value={searchTeam}
                       onChange={(e) => {
                         setSerachTeam(e.target.value)
                       }}
                     />
+                    {
+                      searchTeam.length ? <span className="tozala" onClick={() => setSerachTeam("")} >x</span> : ""
+                    }
                   </div>
                 </th>
-                <th>miqdori</th>
-                <th>yana nimadir</th>
-                <th>birnarsa</th>
+                <th>soni</th>
+                <th>kompania</th>
+                <th>narxi</th>
                 <th>rasmi</th>
                 <th>operatsiya</th>
               </tr>
             </thead>
             <tbody>
               {
-                currentPosts.filter((item) => {
-                  if(searchTeam == ""){
-                    return item
-                  }
-                  else if (item.nomi.toLowerCase().includes(searchTeam.toLocaleLowerCase())){
-                    return item
-                  }
-                }).map(item => (
+                currentPosts.map(item => (
                   <tr key={item.id}>
                     <th>t/r</th>
-                    <td>{item.nomi}</td>
-                    <td>{item.miqdori}</td>
-                    <td>{item.malumot}</td>
-                    <td>{item.qoshimcha}</td>
-                    <td><div className="mahsulot_rasmi"><img src={item.rasmi} alt="mahsulot rasmi" /></div></td>
+                    <td>{item.nom}</td>
+                    <td>{item.son}</td>
+                    <td>{item.kompania}</td>
+                    <td>{item.narx}$ </td>
+                    <td><div className="mahsulot_rasmi"><img src={item.rasm} alt="mahsulot rasmi" /></div></td>
                     <td>
-                      <button className="edit"> <FontAwesomeIcon icon={faEdit} /> </button>
-                      <button className="delete"> <FontAwesomeIcon icon={faTrashAlt} /></button>
+                      <button className="edit"> <FontAwesomeIcon icon={faEdit} onClick={() => path("/mahsulottahrirlash")} /> </button>
+                      <button className="delete" onClick={() => del(item)} > <FontAwesomeIcon icon={faTrashAlt} /></button>
                     </td>
                   </tr>
                 ))
@@ -74,6 +89,10 @@ export default function Mahsulotlar(){
           </table>
               <Pagenation />
         </div>
-    </div>
+      </div>
+      {
+        load ? <Loader /> : ""
+      }
+    </>
   )
 }

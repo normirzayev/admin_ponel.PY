@@ -10,6 +10,7 @@ import Hisobot from "../../components/hisobot/Hisobot";
 import Erorr from "../erorr/Erorr";
 import Login from "../../components/login/Login";
 import Register from "../../components/register/Register";
+import EditData from "../../components/editData/EditData";
 export default function Navbar() {
   const [profile, setProfile] = useState(true)
   const handleProfile = () => {
@@ -36,7 +37,7 @@ export default function Navbar() {
           </div>
           <div className="tugmalar">
               <button>Tahrirlash</button>
-              <button>Batafsil</button>
+              <button>chiqish</button>
           </div>
         </div>
         </div>
@@ -49,8 +50,9 @@ export default function Navbar() {
         </nav>
         <Routes>
           <Route path="/" element={<Mahsulotlar />} /> 
-          <Route path="/mahsulotqoshish" element={<Qoshish />} /> 
           <Route path="/hisobot" element={<Hisobot />} /> 
+          <Route path="/mahsulotqoshish" element={<Qoshish />} /> 
+          <Route path="/mahsulottahrirlash" element={<EditData />} /> 
           <Route path="/login" element={ <Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*"  element={<Erorr /> } />

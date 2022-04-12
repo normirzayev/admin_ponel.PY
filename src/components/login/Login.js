@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import user_img from "../../img/user_img.png";
 import show from "../../img/show.png";
 import hidden from "../../img/hidden.png";
 import "./login.css";

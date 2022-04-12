@@ -31,8 +31,8 @@ export default function Register(){
     
     axios({
       method:"post",
-      url:"https://newwarehouseproject.pythonanywhere.com/dj-rest-auth/registration/",
-      register: formData
+      url:"https://v2warehouseproject.pythonanywhere.com/dj-rest-auth/registration/",
+      data: formData
     })
     .then((res)=>{
       console.log(res);

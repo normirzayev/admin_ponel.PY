@@ -14,7 +14,9 @@ form{
 .mahsulot_kirit input:hover{
   background-color: #c9c9c9;
 }
-
+.mahsulot_kiritish label{
+  text-transform: capitalize;
+}
 .mahsulot_img label{
   width: 169px;
   height: 163px;
@@ -38,6 +40,7 @@ input[type=file]{
 }
 .mahsulot_view p{
   margin-bottom: 10px;
+  text-transform: capitalize;
 }
 .mahsulot_view label{
   width: 164px;
@@ -50,6 +53,7 @@ input[type=file]{
   cursor: pointer;
   box-shadow: 0 0 0 5px rgba(237, 237, 237, 0.7);
   font-size: 30px;
+  text-transform: capitalize;
 }
 .yuzi_toliq{
   display: flex;
@@ -63,7 +67,6 @@ input[type=file]{
   background: #F2F2F2;
   border: 1px solid #D6D6D6;
   padding: 10px;
-  text-transform: capitalize;
   border-radius: 5px;
   margin: 1px;
 }
@@ -93,7 +96,6 @@ input[type=file]{
 .mahuslot_input div input:focus{
   box-shadow: 0 0 0 2px #4A7DA3;
 }
-
 #textarea{
   margin-top: 10px;
   outline: none;
