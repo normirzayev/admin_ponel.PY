@@ -49,8 +49,8 @@ export default function Hisobot(){
               <th>soni</th>
               <th>rangi</th>
               <th>vazn</th>
-              <th>rasmi</th>
               <th>mudat</th>
+              <th>rasmi</th>
             </tr>
           </thead>
           <tbody>
@@ -62,8 +62,8 @@ export default function Hisobot(){
                   <td>{item.son}</td>
                   <td>{item.rang}</td>
                   <td>{item.kg}</td>
-                  <td><div className="mahsulot_rasmi"><img src={item.rasm} alt="mahsulot rasmi" /></div></td>
                   <td>{item.mudat}</td>
+                  <td><div className="mahsulot_rasmi"><img src={item.rasm} alt="mahsulot rasmi" /></div></td>
                 </tr>
               ))
             }

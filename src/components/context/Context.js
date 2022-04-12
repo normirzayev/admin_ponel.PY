@@ -1,20 +1,25 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-// 
-
+import axios from "axios";
 export const DataContext = React.createContext();
 
 const DataContextProvider = ({ children }) => {
   // malumot boshlang'ich ( Read )
   const [data, setData] = useState([]);
   const dataMaxsulot = () =>{
+    // setLoad(true)
     axios({
       method: "GET",
       url:"https://v2warehouseproject.pythonanywhere.com/products/?format=json"
     })
-      .then((res) => setData(res.data))
-      .catch(() => console.log("xatolik boldi"))
+      .then((res) => {
+        setData(res.data)
+        // setLoad(false)
+      })
+      .catch(() => {
+        console.log("xatolik boldi")
+      })
   }
+
   useEffect(() => {
     dataMaxsulot()
   }, [])
@@ -35,8 +40,9 @@ const DataContextProvider = ({ children }) => {
     barcode: "",
     rasm: ""
   })
+
   // malumotni tahrirlash qilish (edit)
-  const [edit_Data, setEdit_Create] = useState({
+  const [editData, setEditData] = useState({
     tur: "",
     nom: "",
     rang: "",
@@ -51,6 +57,7 @@ const DataContextProvider = ({ children }) => {
     barcode: "",
     rasm: ""
   })
+  
   // captcha 
   const [captcha] = useState(btoa(parseInt(Math.random() * 1000)));
 
@@ -76,7 +83,7 @@ const DataContextProvider = ({ children }) => {
   return (
     <DataContext.Provider value={{ 
         currentPosts, setData, captcha, totalPosts, postsPerPage, pagenate, select, setSelect, 
-        creatData, setCreate,edit_Data, setEdit_Create,dataMaxsulot, load, setLoad
+        creatData, setCreate, editData, setEditData, dataMaxsulot, load, setLoad,
     }}>
       {children}
     </DataContext.Provider>

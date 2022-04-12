@@ -9,7 +9,7 @@ import axios from "axios";
 import Loader from "../loader/Loader";
 export default function Mahsulotlar(){
   const path = useNavigate();  
-  const {currentPosts,dataMaxsulot, setLoad, load} = useContext(DataContext);
+  const {currentPosts,dataMaxsulot, load,setLoad, editData, setEditData} = useContext(DataContext);
   const [searchTeam, setSerachTeam] = useState("");
   const [search, setSearch] = useState(true);
   const handleSerach = () => {
@@ -20,7 +20,6 @@ export default function Mahsulotlar(){
   // o'chirish
   const del = (item) => { 
     setLoad(true)
-    console.log();
     axios({
       method:"delete",
       url:`https://v2warehouseproject.pythonanywhere.com/products/${item.sana.slice(0, 4)}/${item.sana.slice(5, 7)}/${item.sana.slice(8, 10)}/${item.id}`
@@ -32,6 +31,11 @@ export default function Mahsulotlar(){
     .catch(() => console.log("xato"))
   }
 
+  // edit
+  const editDatafun = (item) => {
+    setEditData(item)
+    path("/mahsulottahrirlash")
+  }
   return(
     <>
       <div className="mahsulotlar">
@@ -79,7 +83,7 @@ export default function Mahsulotlar(){
                     <td>{item.narx}$ </td>
                     <td><div className="mahsulot_rasmi"><img src={item.rasm} alt="mahsulot rasmi" /></div></td>
                     <td>
-                      <button className="edit"> <FontAwesomeIcon icon={faEdit} onClick={() => path("/mahsulottahrirlash")} /> </button>
+                      <button className="edit"> <FontAwesomeIcon icon={faEdit} onClick={() => editDatafun(item) } /> </button>
                       <button className="delete" onClick={() => del(item)} > <FontAwesomeIcon icon={faTrashAlt} /></button>
                     </td>
                   </tr>
