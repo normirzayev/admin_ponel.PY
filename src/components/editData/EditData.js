@@ -11,7 +11,6 @@ export default function EditData() {
   const changeEditData = (e) => {
     setEditData({ ...editData, [e.target.name]: e.target.value })
   }
-
   function submitdata(e) {
     setLoad(true)
     e.preventDefault();

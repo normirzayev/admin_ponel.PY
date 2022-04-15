@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./register.css";
-import hidden from "../../img/hidden.png";
-import shows from "../../img/show.png";
+import hidden from "../../../img/hidden.png";
+import shows from "../../../img/show.png";
 import axios from "axios";
+import { DataContext } from "../../context/Context";
 export default function Register(){
+  const {handleLink, load, setLoad} = useContext(DataContext)
   const [show, setShow] = useState(true);
   const handleShow = () => {
     setShow(!show)
@@ -21,8 +23,8 @@ export default function Register(){
   }
 
   const registerSubmit = (e) => {
+    setLoad(true)
     e.preventDefault();
-    console.log(register);
     let formData = new FormData();
     formData.append("username", register.username);
     formData.append("email", register.email);
@@ -35,9 +37,18 @@ export default function Register(){
       data: formData
     })
     .then((res)=>{
-      console.log(res);
+      if(res.data.key){
+        handleLink()
+        localStorage.setItem("token", JSON.stringify(res.data))
+        localStorage.setItem("user", JSON.stringify(register))
+        setLoad(false)
+      }
     })
-    .catch(() => console.log("xatolik bor"))
+    .catch(() => {
+      console.log("xatolik bor")
+      alert("to'ldirmadigiz yoki bu account ro'yxatdan o'tgan")
+      setLoad(false)
+    })
   }
 
   return(
@@ -83,6 +94,11 @@ export default function Register(){
         <div className="send">
           <button> send </button>
         </div>
+        <div className="linkPath">
+            <a href="#1" onClick={() => handleLink()}>
+              login
+            </a>
+          </div>
       </form>
     </div>
   )

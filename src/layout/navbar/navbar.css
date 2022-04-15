@@ -22,6 +22,7 @@
   color: #7879F1;
   cursor: pointer;
   text-transform: capitalize;
+  text-align: center;
 }
 .profile_rasm{
   width: 50px;
@@ -108,6 +109,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  gap: 10px;
 }
 .tugmalar button{
   padding: 5px 15px;
@@ -164,4 +166,9 @@ nav a .icon_left{
   background-color:#b3ecff !important;
   color: #4A7DA3 !important;
   transition: all 0.3s ease-in-out;
+}
+#royxatdan_otish{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
 }

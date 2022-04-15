@@ -45,7 +45,11 @@ export default function Qoshish() {
         dataMaxsulot()
         setLoad(false)
       })
-      .catch(() => console.log("xatolik bo'ldi"))
+      .catch(() => {
+        console.log("xatolik bo'ldi")
+        setLoad(false)
+        alert("mahsulot to'ldirilmagan")
+      })
   }
   return (
     <>

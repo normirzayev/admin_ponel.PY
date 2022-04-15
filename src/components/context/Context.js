@@ -3,19 +3,22 @@ import axios from "axios";
 export const DataContext = React.createContext();
 
 const DataContextProvider = ({ children }) => {
+  // login (register)
+
   // malumot boshlang'ich ( Read )
   const [data, setData] = useState([]);
   const dataMaxsulot = () =>{
-    // setLoad(true)
+    setLoad(true)
     axios({
       method: "GET",
       url:"https://v2warehouseproject.pythonanywhere.com/products/?format=json"
     })
       .then((res) => {
         setData(res.data)
-        // setLoad(false)
+        setLoad(false)
       })
       .catch(() => {
+        setLoad(false)
         console.log("xatolik boldi")
       })
   }
@@ -59,7 +62,7 @@ const DataContextProvider = ({ children }) => {
   })
   
   // captcha 
-  const [captcha] = useState(btoa(parseInt(Math.random() * 1000)));
+  const [captcha, setCaptcha] = useState(btoa(parseInt(Math.random() * 1000)));
 
   // pagenation qilish
   const [currentPage, setCurrentPage] = useState(1);
@@ -79,11 +82,16 @@ const DataContextProvider = ({ children }) => {
 
   // loader
   const [load, setLoad] = useState(false);
-  
+  // register va login true false
+  const [loginBolleam, setLoginBolleam] = useState(false);
+  const handleLink = () => {
+    setLoginBolleam(!loginBolleam);
+  }
+
   return (
     <DataContext.Provider value={{ 
         currentPosts, setData, captcha, totalPosts, postsPerPage, pagenate, select, setSelect, 
-        creatData, setCreate, editData, setEditData, dataMaxsulot, load, setLoad,
+        creatData, setCreate, editData, setEditData, dataMaxsulot, load, setLoad, loginBolleam,setLoginBolleam, handleLink, setCaptcha
     }}>
       {children}
     </DataContext.Provider>

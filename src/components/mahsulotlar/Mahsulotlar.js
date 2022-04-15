@@ -9,7 +9,7 @@ import axios from "axios";
 import Loader from "../loader/Loader";
 export default function Mahsulotlar(){
   const path = useNavigate();  
-  const {currentPosts,dataMaxsulot, load,setLoad, editData, setEditData} = useContext(DataContext);
+  const {currentPosts, dataMaxsulot, load,setLoad, setEditData} = useContext(DataContext);
   const [searchTeam, setSerachTeam] = useState("");
   const [search, setSearch] = useState(true);
   const handleSerach = () => {
@@ -26,9 +26,11 @@ export default function Mahsulotlar(){
     })
     .then((res) => {
       dataMaxsulot()
+    })
+    .catch(() => {
+      console.log("xato")
       setLoad(false)
     })
-    .catch(() => console.log("xato"))
   }
 
   // edit

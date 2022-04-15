@@ -1,27 +1,45 @@
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from "react-router-dom"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Mahsulotlar from "../../components/mahsulotlar/Mahsulotlar";
 import Qoshish from "../../components/qoshish/Qoshish";
 import user from "../../img/profile.jpg";
 import "./navbar.css";
 import { faCamera, faRightLong } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import Hisobot from "../../components/hisobot/Hisobot";
 import Erorr from "../erorr/Erorr";
-import Login from "../../components/login/Login";
-import Register from "../../components/register/Register";
 import EditData from "../../components/editData/EditData";
+import Royxat from "../../components/ro'yxat_o'tish/Royxat";
 export default function Navbar() {
   const [profile, setProfile] = useState(true)
+  const linkk = useNavigate();
   const handleProfile = () => {
     setProfile(!profile)
   }
+  const [name, setName] = useState({});
+  useEffect(() => {
+    setInterval(() => {
+      if(localStorage.getItem("user") && localStorage.getItem("token") ){
+        setName(JSON.parse(localStorage.getItem("user")))
+      }
+      else{
+        linkk("/royxat")
+      }
+    }, 1500);
+  }, [])
+
+  const logOut = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    linkk("/royxat")
+    setProfile(!profile)
+  }
   return(
-    <Router>
+    <>
       <div className="header">
         <div className="logo"><span>Logo</span> Company</div>
         <div className="profile">
-          <div className="user"> <p>eshmatov toshmat</p></div>
+          <div className="user"> <p>{name.username}</p></div>
           <div className="profile_rasm" onClick={() => handleProfile()}>
             <img src={user} alt="profile" />
           </div>
@@ -33,11 +51,16 @@ export default function Navbar() {
             <span> <FontAwesomeIcon icon={faCamera}></FontAwesomeIcon> </span>
           </div>          
           <div className="user">
-            <p>eshmatov toshmat</p>
+            <p>{name.username}</p>
           </div>
           <div className="tugmalar">
               <button>Tahrirlash</button>
-              <button>chiqish</button>
+              <button onClick={logOut}> chiqish</button>
+          </div>
+          <div id="royxatdan_otish">
+            <a href="#1" onClick={() => logOut()}>
+              Ro'yxatdan o'tish
+            </a>
           </div>
         </div>
         </div>
@@ -53,11 +76,10 @@ export default function Navbar() {
           <Route path="/hisobot" element={<Hisobot />} /> 
           <Route path="/mahsulotqoshish" element={<Qoshish />} /> 
           <Route path="/mahsulottahrirlash" element={<EditData />} /> 
-          <Route path="/login" element={ <Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/royxat" element={< Royxat />} />
           <Route path="*"  element={<Erorr /> } />
         </Routes>
       </div>
-    </Router>
+    </>
   )
 }
