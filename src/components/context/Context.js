@@ -88,6 +88,7 @@ const DataContextProvider = ({ children }) => {
     setLoginBolleam(!loginBolleam);
   }
 
+
   return (
     <DataContext.Provider value={{ 
         currentPosts, setData, captcha, totalPosts, postsPerPage, pagenate, select, setSelect, 

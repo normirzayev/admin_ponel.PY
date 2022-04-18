@@ -95,7 +95,7 @@ td .delete:hover{
   position: absolute;
   top: 3px;
   width: 3%;
-  left: 17%;
+  left: 19%;
   display: flex;
   align-items: center;
   background-color: white;
@@ -115,11 +115,13 @@ td .delete:hover{
 .searchTeam .searchIcon{
   color: black;
   cursor: pointer;
-  margin-right: 5px;
+  padding-right:6px;
 }
-.searchActive{
+.searchTeam.searchActive,
+.searchInput.searchActive
+{
   width: 180px;
-  left: 5%;
+  left: 7%;
   overflow: auto;
 }
 
@@ -133,4 +135,15 @@ td .delete:hover{
 .tozala:hover{
   color: rgba(255, 0, 0, 0.616);
   background-color: rgba(128, 128, 128, 0.774);
+}
+
+
+@media (max-width:1075px){
+  .mahsulotlar {
+    padding: 0 10px;
+    width: 100%;
+  }
+  .searchTeam{
+    width: 4%;
+  }
 }

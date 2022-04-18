@@ -18,14 +18,14 @@ export default function Navbar() {
   }
   const [name, setName] = useState({});
   useEffect(() => {
-    setInterval(() => {
+    // setInterval(() => {
       if(localStorage.getItem("user") && localStorage.getItem("token") ){
         setName(JSON.parse(localStorage.getItem("user")))
       }
       else{
         linkk("/royxat")
       }
-    }, 1500);
+    // }, 1500);
   }, [])
 
   const logOut = () => {
@@ -33,6 +33,12 @@ export default function Navbar() {
     localStorage.removeItem("user")
     linkk("/royxat")
     setProfile(!profile)
+  }
+
+  // navlink active qilish state
+  const [nav, setNav] = useState(false);
+  const handleNavlink = () => {
+    setNav(!nav);
   }
   return(
     <>
@@ -66,11 +72,16 @@ export default function Navbar() {
         </div>
       </div>
       <div className="page_comp">
-        <nav>
-          <NavLink to="/"activeclassname="active"><pre>mahsulotlar</pre> <FontAwesomeIcon className="icon_left" icon={faRightLong}/>  </NavLink>
-          <NavLink to="/hisobot"><pre>hisobot</pre>  <FontAwesomeIcon icon={faRightLong} className="icon_left"/> </NavLink>
-          <NavLink to="/mahsulotqoshish"><pre>mahsulot qo'shish</pre>  <FontAwesomeIcon className="icon_left" icon={faRightLong}/> </NavLink>
+        <nav className={nav ? "nav" : "nav activ"}>
+          <NavLink to="/"activeclassname="active" onClick={() => setNav(!nav)}><pre>mahsulotlar</pre> <FontAwesomeIcon className="icon_left" icon={faRightLong} />  </NavLink>
+          <NavLink to="/hisobot" onClick={() => setNav(!nav)}><pre>hisobot</pre>  <FontAwesomeIcon icon={faRightLong} className="icon_left"/> </NavLink>
+          <NavLink to="/mahsulotqoshish" onClick={() => setNav(!nav)}><pre>mahsulot qo'shish</pre>  <FontAwesomeIcon className="icon_left" icon={faRightLong}/> </NavLink>
         </nav>
+          <div className={nav ? "hamburger" : "hamburger activ"} onClick={() => handleNavlink()}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         <Routes>
           <Route path="/" element={<Mahsulotlar />} /> 
           <Route path="/hisobot" element={<Hisobot />} /> 

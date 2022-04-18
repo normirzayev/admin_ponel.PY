@@ -5,8 +5,10 @@ import { useContext } from "react";
 import { DataContext } from "../context/Context";
 import Loader from "../loader/Loader";
 import "./qoshish.css";
+import { useNavigate } from "react-router-dom"
 export default function Qoshish() {
-
+  const path = useNavigate();
+  
   const { creatData, setCreate, dataMaxsulot, load, setLoad } = useContext(DataContext);
 
   // malumot qo'shish
@@ -44,6 +46,7 @@ export default function Qoshish() {
         console.log(res)
         dataMaxsulot()
         setLoad(false)
+        path("/");
       })
       .catch(() => {
         console.log("xatolik bo'ldi")

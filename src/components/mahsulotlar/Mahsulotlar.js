@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { DataContext } from "../context/Context";
 import { faEdit, faPlusCircle, faSearch, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +38,7 @@ export default function Mahsulotlar(){
     setEditData(item)
     path("/mahsulottahrirlash")
   }
+  
   return(
     <>
       <div className="mahsulotlar">
@@ -68,7 +69,7 @@ export default function Mahsulotlar(){
                   </div>
                 </th>
                 <th>soni</th>
-                <th>kompania</th>
+                <th>kompania</th> 
                 <th>narxi</th>
                 <th>rasmi</th>
                 <th>operatsiya</th>
@@ -76,7 +77,14 @@ export default function Mahsulotlar(){
             </thead>
             <tbody>
               {
-                currentPosts.map(item => (
+                currentPosts.filter((val) => {
+                  if(searchTeam == "") {
+                    return val
+                  }
+                  else if (val.nom.toLowerCase().includes(searchTeam.toLowerCase())){
+                    return val
+                  }
+                }).map(item => (
                   <tr key={item.id}>
                     <th>t/r</th>
                     <td>{item.nom}</td>

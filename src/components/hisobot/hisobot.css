@@ -23,3 +23,19 @@
   margin: 0 5px ;
   color: #3d3d3d;
 }
+
+@media (max-width:1075px) {
+  .hisobot{
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .hisobot{
+    padding: 0 10px;
+  }
+  .hisobot .header-flex{
+    flex-direction: column;
+  }
+}

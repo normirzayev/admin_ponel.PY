@@ -55,7 +55,14 @@ export default function Hisobot(){
           </thead>
           <tbody>
             {
-              currentPosts.map(item => (
+              currentPosts.filter((val) => {
+                if(searchTeam == "") {
+                  return val
+                }
+                else if (val.nom.toLowerCase().includes(searchTeam.toLowerCase())){
+                  return val
+                }
+              }).map(item => (
                 <tr key={item.id}>
                   <th>t/r</th>
                   <td>{item.nom}</td>

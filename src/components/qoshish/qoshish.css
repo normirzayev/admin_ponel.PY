@@ -112,3 +112,16 @@ input[type=file]{
 #textarea:focus{
   box-shadow: 0 0 0 2px #4A7DA3;
 }
+
+@media (max-width:1075px) {
+  .qoshish{
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .qoshish{
+    padding: 0 10px;
+  }
+}
