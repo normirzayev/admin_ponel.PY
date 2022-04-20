@@ -5,7 +5,7 @@ import Pagenation from "../../layout/pagenation/Pagenation";
 import { DataContext } from "../context/Context";
 import "./hisobot.css";
 export default function Hisobot(){
-  const {currentPosts} = useContext(DataContext);
+  const {currentPosts, dark} = useContext(DataContext);
   const [searchTeam, setSerachTeam] = useState("");
   const [search, setSearch] = useState(true);
   const handleSerach = () => {
@@ -63,7 +63,7 @@ export default function Hisobot(){
                   return val
                 }
               }).map(item => (
-                <tr key={item.id}>
+                <tr key={item.id} className={dark ? "tbody_tr" : "tbody_tr dark_tr"}>
                   <th>t/r</th>
                   <td>{item.nom}</td>
                   <td>{item.son}</td>

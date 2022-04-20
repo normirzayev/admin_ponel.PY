@@ -14,7 +14,7 @@
   text-decoration: none;
 }
 .pagenation ul li a:hover {
-  color: black;
+  color:blue ;
   border-bottom: 2px solid rgba(0, 0, 255, 0.616);  
 }
 .pagenation a.activv{

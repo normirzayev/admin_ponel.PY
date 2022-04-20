@@ -44,13 +44,12 @@ th{
   padding: 10px;
   text-transform: capitalize;
 }
-tbody tr:nth-child(2n){
+.tbody_tr:nth-child(2n){
   background-color:#F4F4F4;
 }
-tbody tr:hover{
-  background-color:#dbdbdb;
-  box-shadow: 0 3px 5px 2px rgb(216, 216, 216);
-  transition: 0.2s ease-in-out;  
+
+.tbody_tr.dark_tr:nth-child(2n-1){
+  color: white;
 }
 tr .mahsulot_rasmi{
   width: 154px;

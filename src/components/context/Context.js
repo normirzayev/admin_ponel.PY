@@ -88,11 +88,16 @@ const DataContextProvider = ({ children }) => {
     setLoginBolleam(!loginBolleam);
   }
 
-
+  // darkMode 
+  const [dark, setDark] = useState(true);
+  const handleDark = () => {
+    setDark(!dark);
+    console.log(dark);
+  }
   return (
     <DataContext.Provider value={{ 
         currentPosts, setData, captcha, totalPosts, postsPerPage, pagenate, select, setSelect, 
-        creatData, setCreate, editData, setEditData, dataMaxsulot, load, setLoad, loginBolleam,setLoginBolleam, handleLink, setCaptcha
+        creatData, setCreate, editData, setEditData, dataMaxsulot, load, setLoad, loginBolleam,setLoginBolleam, handleLink, setCaptcha, dark, handleDark
     }}>
       {children}
     </DataContext.Provider>

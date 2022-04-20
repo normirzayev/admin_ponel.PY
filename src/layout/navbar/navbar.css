@@ -6,6 +6,13 @@
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
   font-size: 22px;
 }
+.dark_nav{
+  background-color: black;
+}
+.dark_rejim{
+  box-shadow:  0px -5px 5px rgba(253, 253, 253, 0.274);
+  background-color: black;
+}
 .logo{
   color:#B04949;
 }
@@ -26,10 +33,14 @@
 }
 .profile_rasm{
   width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: red;
 }
 .profile_rasm img{
   width: 100%;
-  border-radius: 50%;
+  height: 100%;
   object-fit: cover;
   cursor: pointer;
 }
@@ -70,7 +81,8 @@
   background-color: rgba(192, 192, 192, 0.589);
 }
 .about_rasm{
-  width: 80px;
+  width: 70px;
+  height: 70px;
   position: relative;
   overflow: hidden;
   border-radius:100%;
@@ -83,26 +95,27 @@
   width: 100%;
   height: 30px;
   background-color: black;
-  bottom: -50px;
+  bottom: -30px;
   left:0;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   text-align: center;
   color: silver;
   font-size: 14px;
-  line-height: 30px;
+  line-height: 20px;
 }
 .about_rasm img{
   width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
 }
-.about_rasm label:hover ~ span{
-  bottom: 0px;
+.about_rasm label:hover span{
+  bottom: -10px;
 }
 .about_rasm span:hover {
-  bottom: 0px;
+  bottom: -10px;
 }
 .profile-about .tugmalar{
   width: 100%;
@@ -139,7 +152,6 @@
   flex-direction: column;  
   box-shadow: 0 0 5px 3px rgb(226, 226, 226);
   height: 200px;
-  
 }
 
 .nav a{
@@ -152,7 +164,10 @@
 }
 
 .nav a:nth-child(2n - 1){
-  background-color: #f5f5f5;
+  background-color: #ebebeb;
+}
+.nav a:nth-child(2n){
+  background-color: white;
 }
 
 .nav a:hover{
@@ -196,15 +211,15 @@
     top: 54%;
   }
   .hamburger{
-    width: 50px;
-    height: 40px;
+    width: 45px;
+    height: 35px;
     background-color: rgb(189, 52, 52);
     border-radius:0 0 50% 50%;
     position: absolute;
     display: flex;
     flex-direction: column;
     gap: 3px;
-    padding: 10px;
+    padding: 8px;
     top: 0;
     z-index: 1;
     transition: 0.3s ease-in-out;
@@ -216,4 +231,20 @@
     background-color: grey;
   }
 }
-
+.qora{
+  color: white;
+}
+.darkDiv{
+  margin: 10px;
+  width: 60px;
+  background-color: black;
+  padding: 5px; 
+  line-height: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.darkDiv.dark_div{
+  background-color: white;
+  text-align: right;
+}

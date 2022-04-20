@@ -9,4 +9,8 @@
   max-width: 1440px;
   margin: auto;
   display: block;
+  min-height: 100vh;
+}
+.App.appQora{
+  background-color: black;
 }

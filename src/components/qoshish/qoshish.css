@@ -21,7 +21,7 @@ form{
   width: 169px;
   height: 163px;
   border: 2px dashed #A5A6F6;
-  background: rgba(237, 237, 237, 0.7);
+  background-color: #F5F5F5;
   box-shadow: 0 0 0 5px rgba(237, 237, 237, 0.7);
   display: flex;
   align-items: center;
